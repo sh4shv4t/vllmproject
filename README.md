@@ -24,20 +24,14 @@ Follow these steps to get the project up and running on your local machine.
 1.  Clone this repository:
 
     ```bash
-    git clone [your-repository-url]
-    cd [your-project-directory]
+    git clone https://github.com/sh4shv4t/vllmproject
+    cd https://github.com/sh4shv4t/vllmproject
     ```
 
 2.  Install the required Python packages for the backend:
 
     ```bash
     pip install -r requirements.txt
-    ```
-
-    *If you don't have a `requirements.txt` file, you can install the dependencies manually:*
-
-    ```bash
-    pip install flask flask-cors requests vllm
     ```
 
 ### Running the Application
@@ -95,4 +89,4 @@ This project uses a simple, yet effective, method for conversational memory:
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome\! Please reach out to me as I am currently still in the process of setting this project up
+Contributions, issues, and feature requests are welcome\! Please reach out to me as I am currently still in the process of setting this project up.
