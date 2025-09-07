@@ -1,26 +1,27 @@
 // Function to handle sending the message
 async function sendMessage(event) {
-    // Prevent the form from submitting in the traditional way
     event.preventDefault(); 
     
     const promptInput = document.getElementById('prompt-input');
     const userPrompt = promptInput.value.trim();
 
-    if (!userPrompt) return; // Don't send empty messages
+    if (!userPrompt) return;
 
     appendMessage('user', userPrompt);
-    promptInput.value = ''; // Clear the input field
+    promptInput.value = '';
 
-    // The URL should match your Flask server's endpoint
     const apiEndpoint = 'http://127.0.0.1:5000/ask'; 
+    let sessionId = localStorage.getItem('sessionId');
+    if (!sessionId) {
+        sessionId = `chat-${Date.now()}`;
+        localStorage.setItem('sessionId', sessionId);
+    }
     
     try {
         const response = await fetch(apiEndpoint, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ prompt: userPrompt })
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ prompt: userPrompt, session_id: sessionId })
         });
 
         if (!response.ok) {
@@ -41,7 +42,7 @@ async function sendMessage(event) {
     }
 }
 
-// Function to add a message to the chat window
+// Function to add a message to the chat window (same as before)
 function appendMessage(sender, text) {
     const chatWindow = document.getElementById('chat-window');
     const messageContainer = document.createElement('div');
@@ -54,6 +55,5 @@ function appendMessage(sender, text) {
     messageContainer.appendChild(messageBox);
     chatWindow.appendChild(messageContainer);
     
-    // Scroll to the bottom of the chat window
     chatWindow.scrollTop = chatWindow.scrollHeight;
 }
