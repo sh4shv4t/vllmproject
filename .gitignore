@@ -1,2 +1,5 @@
 # To ignore the venv
 /venv
+
+# To ignore the database file
+/chat_history.db
