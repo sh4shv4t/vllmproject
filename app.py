@@ -89,5 +89,20 @@ def ask_llm():
         print(f"API request to vLLM failed: {e}")
         return jsonify({"error": f"Failed to connect to the LLM backend."}), 500
 
+@app.route('/get_chat_history', methods=['POST'])
+def get_chat_history():
+    session_id = request.json.get('session_id')
+    if not session_id:
+        return jsonify({"error": "No session_id provided"}), 400
+
+    conn = get_db_connection()
+    messages_from_db = conn.execute('SELECT role, content FROM messages WHERE session_id = ? ORDER BY timestamp', (session_id,)).fetchall()
+    conn.close()
+
+    # Convert the list of Row objects to a list of dictionaries
+    history = [{'role': msg['role'], 'content': msg['content']} for msg in messages_from_db]
+
+    return jsonify({"history": history})
+
 if __name__ == '__main__':
     app.run(debug=True)

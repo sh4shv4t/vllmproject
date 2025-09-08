@@ -8,12 +8,22 @@
 </head>
 <body>
 
-<div class="container">
-    <div id="chat-window"></div>
-    <form id="input-form" onsubmit="sendMessage(event)">
-        <input type="text" id="prompt-input" placeholder="Type your message here..." required>
-        <button type="submit">Send</button>
-    </form>
+<div class="chat-container">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>Conversations</h2>
+            <button id="new-chat-btn">+</button>
+        </div>
+        <ul id="chat-list">
+            </ul>
+    </div>
+    <div class="main-chat">
+        <div id="chat-window"></div>
+        <form id="input-form" onsubmit="sendMessage(event)">
+            <input type="text" id="prompt-input" placeholder="Type your message here..." required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
 </div>
 
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>

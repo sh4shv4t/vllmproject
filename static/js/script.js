@@ -46,7 +46,7 @@ async function sendMessage(event) {
 function appendMessage(sender, text) {
     const chatWindow = document.getElementById('chat-window');
     const messageContainer = document.createElement('div');
-    messageContainer.classList.add('message-container', sender);
+    messageContainer.classList.add('message-container', sender + '-message'); 
     
     const messageBox = document.createElement('div');
     messageBox.classList.add('message-box');

@@ -79,3 +79,58 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+
+.user-message {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.user-message .message-box {
+    background-color: #007bff; /* A nice blue color */
+    color: white;
+    border-radius: 15px 15px 0 15px; /* Rounded corners */
+    max-width: 70%;
+}
+
+.bot-message {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.bot-message .message-box {
+    background-color: #e9ecef; /* A light gray color */
+    color: black;
+    border-radius: 15px 15px 15px 0;
+    max-width: 70%;
+}
+
+.chat-container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+}
+
+.main-chat {
+    flex-grow: 1; /* Takes up the remaining space */
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-list li {
+    list-style: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.chat-list li.active {
+    background-color: #e2e6ea;
+    font-weight: bold;
+}

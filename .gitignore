@@ -2,4 +2,4 @@
 /venv
 
 # To ignore the database file
-/chat_history.db
+chat_history.db
