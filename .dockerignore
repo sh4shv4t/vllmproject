@@ -1,0 +1,15 @@
+# avoid sending huge stuff accidentally
+venv
+models
+model_data
+*.ckpt
+*.pth
+*.safetensors
+*.pt
+*.onnx
+
+# git + editor
+.git
+.vscode
+.idea
+.DS_Store

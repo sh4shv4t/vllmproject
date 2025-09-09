@@ -1,0 +1,24 @@
+services:
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    image: flask-app:latest
+    ports:
+      - "5000:5000"
+    depends_on:
+      - vllm
+    environment:
+      - VLLM_URL=http://vllm:8000
+    restart: unless-stopped
+
+  vllm:
+    # Use the official vLLM OpenAI-compatible server image.
+    image: vllm/vllm-openai:latest
+    ports:
+      - "8000:8000"
+    # If you have large local model files and want to mount them:
+    # volumes:
+    #   - /absolute/path/on/host/models:/models
+    # command: python3 -m vllm.entrypoints.openai.api_server --model /models/your-model
+    restart: unless-stopped

@@ -1,0 +1,28 @@
+# Python virtual env
+venv
+.env
+__pycache__
+*.pyc
+
+# Git
+.git
+.gitignore
+
+# Large model/data files
+models
+model_data
+*.ckpt
+*.pth
+*.safetensors
+*.pt
+*.onnx
+
+# OS stuff / editors
+.vscode
+.idea
+.DS_Store
+
+# Anything node / build artifacts
+node_modules
+dist
+build
